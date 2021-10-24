@@ -1,0 +1,23 @@
+spring:
+    jpa:
+        hibernate:
+            ddl-auto: validate
+        properties:
+            hibernate:
+                format_sql: true
+                dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show-sql: true
+    output:
+        ansi:
+            enabled: always
+    datasource:
+        hikari:
+            master:
+                username: root
+                password: masterpw
+                jdbc-url: jdbc:mysql://localhost:33306/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+            slave:
+                username: root
+                password: slavepw
+                jdbc-url: jdbc:mysql://localhost:33307/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+
