@@ -7,16 +7,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @SpringBootTest
-class DbReplicationLearnApplicationTests {
+class SlvaesTest {
 
     @Autowired
     Slaves slaves;
 
     @Test
-    void contextLoads() {
+    void checkBean() {
         List<Slaves.Slave> slaveList = slaves.getSlaveList();
         slaveList.forEach(System.out::println);
+        assertThat(slaveList).hasSize(2);
+        assertThat(slaveList).extracting("name").contains("slave1", "slave2");
     }
-
 }

@@ -11,13 +11,23 @@ spring:
         ansi:
             enabled: always
     datasource:
+        username: root
+        password: masterpw
+        url: jdbc:mysql://localhost:33306/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+        driver-class-name: com.mysql.cj.jdbc.Driver
         hikari:
             master:
                 username: root
                 password: masterpw
                 jdbc-url: jdbc:mysql://localhost:33306/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
             slave:
-                username: root
-                password: slavepw
-                jdbc-url: jdbc:mysql://localhost:33307/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+                slave-List:
+                    -   name: slave1
+                        username: root
+                        password: slavepw
+                        jdbc-url: jdbc:mysql://localhost:33307/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
+                    -   name: slave2
+                        username: root
+                        password: slavepw
+                        jdbc-url: jdbc:mysql://localhost:33308/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
 
