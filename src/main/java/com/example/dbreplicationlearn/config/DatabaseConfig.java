@@ -47,7 +47,7 @@ public class DatabaseConfig {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource.hikari.master")
+    @ConfigurationProperties(prefix = "spring.datasource.charlie.master")
     public DataSource masterDataSource() {
         return DataSourceBuilder.create().type(HikariDataSource.class).build();
     }

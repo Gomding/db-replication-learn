@@ -24,10 +24,10 @@ public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
         final boolean isReadOnly = TransactionSynchronizationManager.isCurrentTransactionReadOnly();
         if (isReadOnly) {
             String nextSlaveDataSourceName = slaveDataSourceNames.getNextName();
-            LOGGER.info("Using Slave DB Name : {}", nextSlaveDataSourceName);
+            LOGGER.info("Using Replica DB Name : {}", nextSlaveDataSourceName);
             return nextSlaveDataSourceName;
         }
-        LOGGER.info("Using Master DB");
+        LOGGER.info("Using Source DB");
         return DATA_SOURCE_KEY_MASTER;
     }
 
@@ -41,11 +41,9 @@ public class ReplicationRoutingDataSource extends AbstractRoutingDataSource {
         }
 
         public String getNextName() {
-            LOGGER.info("counter : {}", this.counter);
             if (counter == values.size()) {
                 counter = 0;
             }
-            LOGGER.info("counter : {}", this.counter);
             return values.get(counter++);
         }
     }

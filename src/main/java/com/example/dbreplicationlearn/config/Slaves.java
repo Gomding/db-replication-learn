@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@ConfigurationProperties(prefix = "spring.datasource.hikari.slave")
+@ConfigurationProperties(prefix = "spring.datasource.charlie.slave")
 public class Slaves {
 
     List<Slave> slaveList = new ArrayList<>();

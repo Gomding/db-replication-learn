@@ -15,7 +15,7 @@ spring:
         password: masterpw
         url: jdbc:mysql://localhost:33306/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
         driver-class-name: com.mysql.cj.jdbc.Driver
-        hikari:
+        charlie:
             master:
                 username: root
                 password: masterpw
@@ -28,6 +28,6 @@ spring:
                         jdbc-url: jdbc:mysql://localhost:33307/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
                     -   name: slave2
                         username: root
-                        password: slavepw
+                        password: masterpw
                         jdbc-url: jdbc:mysql://localhost:33308/subway?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true
 
