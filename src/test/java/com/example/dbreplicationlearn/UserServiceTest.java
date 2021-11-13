@@ -29,13 +29,13 @@ class UserServiceTest {
         user1 = new User("charlie");
     }
 
-    @DisplayName("유저를 저장한다.")
+    @DisplayName("유저를 저장한다. - master DB를 사용한다.")
     @Test
     void save() {
         userService.save(user1);
     }
 
-    @DisplayName("유저 전체를 조회한다.")
+    @DisplayName("유저 전체를 조회한다. - source DB를 사용한다.")
     @Test
     void findAll() {
         List<User> users = userService.findAll();
@@ -43,7 +43,7 @@ class UserServiceTest {
         users.forEach(user -> System.out.println(user.getName()));
     }
 
-    @DisplayName("N개의 Slave 데이터베이스를 번갈아가며 사용한다.")
+    @DisplayName("여러번 조회시 - N개의 Slave 데이터베이스를 번갈아가며 사용한다.")
     @Test
     void switchSlaveDatabase() {
         User newUser = userService.save(user1);
@@ -57,7 +57,7 @@ class UserServiceTest {
         assertThat(findUser1.getName()).isEqualTo(user1.getName());
     }
 
-    @DisplayName("유저를 수정한다.")
+    @DisplayName("유저를 수정한다. -> readOnly=false인 메서드 내부에서 readOnly=true인 메서드를 호출 ")
     @Test
     void update() {
         // given

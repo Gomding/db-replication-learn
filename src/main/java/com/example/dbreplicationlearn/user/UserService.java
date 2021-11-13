@@ -29,13 +29,15 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    @Transactional(readOnly = true, propagation = Propagation.NESTED)
+    @Transactional(readOnly = true)
     public User findById(Long id) {
         System.out.println("execute findById");
         return userRepository.findById(id).orElseThrow(RuntimeException::new);
     }
 
+    @Transactional
     public void update(Long id, String name) {
+        System.out.println("execute update");
         User user = findById(id);
         user.update(name);
     }
